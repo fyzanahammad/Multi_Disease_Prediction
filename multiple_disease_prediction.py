@@ -5,16 +5,16 @@ from streamlit_option_menu import option_menu
 # loading the saved models
 # don't forget to change '\' to '/'
 diabetes_model = pickle.load(
-    open('F:/Jupyter files/Projects/Multi Disease Prediction/Saved models/Diabetes prediction model.sav', 'rb'))
+    open('Saved models/Diabetes prediction model.sav', 'rb'))
 
 heart_disease_model = pickle.load(
-    open('F:/Jupyter files/Projects/Multi Disease Prediction/Saved models/Heart disease model.sav', 'rb'))
+    open('Saved models/Heart disease model.sav', 'rb'))
 
 parkinsons_disease_model = pickle.load(
-    open('F:/Jupyter files/Projects/Multi Disease Prediction/Saved models/Parkinsons disease model.sav', 'rb'))
+    open('Saved models/Parkinsons disease model.sav', 'rb'))
 
 breast_cancer_model = pickle.load(
-    open('F:/Jupyter files/Projects/Multi Disease Prediction/Saved models/Breast_cancer_model.sav', 'rb'))
+    open('Saved models/Breast_cancer_model.sav', 'rb'))
 
 # sidebar for navigation
 with st.sidebar:
