@@ -1,20 +1,23 @@
 import pickle
+import  os
 import streamlit as st
 from streamlit_option_menu import option_menu
 
 # loading the saved models
 # don't forget to change '\' to '/'
+dirname = os.path.dirname(__file__)
+
 diabetes_model = pickle.load(
-    open('Saved models/Diabetes prediction model.sav', 'rb'))
+    open(os.path.join(dirname,'Saved_models', 'Diabetes_prediction_model.sav'), 'rb'))
 
 heart_disease_model = pickle.load(
-    open('Saved models/Heart disease model.sav', 'rb'))
+    open(os.path.join(dirname,'Saved_models', 'Heart disease model.sav'), 'rb'))
 
 parkinsons_disease_model = pickle.load(
-    open('Saved models/Parkinsons disease model.sav', 'rb'))
+    open(os.path.join(dirname,'Saved_models', 'Parkinsons disease model.sav'), 'rb'))
 
 breast_cancer_model = pickle.load(
-    open('Saved models/Breast_cancer_model.sav', 'rb'))
+    open(os.path.join(dirname,'Saved_models', 'Breast_cancer_model.sav'), 'rb'))
 
 # sidebar for navigation
 with st.sidebar:
