@@ -1,4 +1,5 @@
 import pickle
+import numpy as np
 import os
 import streamlit as st
 from streamlit_option_menu import option_menu
@@ -11,10 +12,10 @@ diabetes_model = pickle.load(
     open(os.path.join(dirname,'Saved_models', 'Diabetes_prediction_model.sav'), 'rb'))
 
 heart_disease_model = pickle.load(
-    open(os.path.join(dirname,'Saved_models', 'Heart disease model.sav'), 'rb'))
+    open(os.path.join(dirname,'Saved_models', 'Heart_disease_model.sav'), 'rb'))
 
 parkinsons_disease_model = pickle.load(
-    open(os.path.join(dirname,'Saved_models', 'Parkinsons disease model.sav'), 'rb'))
+    open(os.path.join(dirname,'Saved_models', 'Parkinsons_disease_model.sav'), 'rb'))
 
 breast_cancer_model = pickle.load(
     open(os.path.join(dirname,'Saved_models', 'Breast_cancer_model.sav'), 'rb'))
@@ -111,9 +112,17 @@ if (selected == 'Heart disease prediction'):
     # prediction variable
     heart_detection = ''
 
+    # input list
+    user_input = [age, sex, chest_pain_type, resting_blood_pressure, cholestoral, fasting_blood_sugar, rest_ecg, Max_heart_rate, exercise_induced_angina, oldpeak, slope, vessels_colored_by_flourosopy, thalassemia]
+    print(user_input)
+    user_array = np.asarray(user_input)
+    print(user_array)
+    input_reshaped = user_array.reshape(1,-1)
+
     # creating a button for prediction
     if st.button('Detect Heart Disease'):
-        heart_prediction = heart_disease_model.predict([[age, sex, chest_pain_type, resting_blood_pressure, cholestoral, fasting_blood_sugar, rest_ecg, Max_heart_rate, exercise_induced_angina, oldpeak, slope, vessels_colored_by_flourosopy, thalassemia]])
+
+        heart_prediction = heart_disease_model.predict(input_reshaped)
 
         if(heart_prediction[0]==1):
             heart_detection = 'The person is suffering a Heart Disease'
